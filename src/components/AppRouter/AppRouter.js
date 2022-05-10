@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AppLayout from "../AppLayout/AppLayout";
+import Fallback from "../Fallback/Fallback";
 
 const Home = React.lazy(() => import("../../containers/Home/Home"));
 const Login = React.lazy(() => import("../../containers/Login/Login"));
@@ -8,7 +9,7 @@ const Login = React.lazy(() => import("../../containers/Login/Login"));
 const AppRouter = () => {
   return (
     <BrowserRouter>
-      <Suspense fallback={<h4>Loading</h4>}>
+      <Suspense fallback={<Fallback />}>
         <Routes>
           <Route path="/" element={<AppLayout />}>
             <Route index element={<Home />} />
