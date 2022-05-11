@@ -13,6 +13,7 @@ const Home = () => {
 
   useEffect(() => {
     getPosts().then((res) => {
+      
       setPosts(res);
     });
   }, []);

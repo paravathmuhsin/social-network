@@ -1,11 +1,14 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import AppLayout from "../AppLayout/AppLayout";
 import Fallback from "../Fallback/Fallback";
 
 const Home = React.lazy(() => import("../../containers/Home/Home"));
 const PostDetail = React.lazy(() => import("../../containers/Home/PostDetail"));
 const Login = React.lazy(() => import("../../containers/Login/Login"));
+const Photos=React.lazy(()=>import ( "../../containers/Photos/Photos"));
+const PhotoDetails=React.lazy(()=>import ( "../../containers/Photos/PhotoDetails"));
 
 const AppRouter = () => {
   return (
@@ -15,7 +18,10 @@ const AppRouter = () => {
           <Route path="/" element={<AppLayout />}>
             <Route index element={<Home />} />
             <Route path="post/:id" element={<PostDetail />} />
+            <Route path="/Photos" element={<Photos />}/>
+            <Route path="Photos/:id" element={<PhotoDetails />} />
           </Route>
+         
           <Route path="/login" element={<Login />} />
         </Routes>
       </Suspense>
