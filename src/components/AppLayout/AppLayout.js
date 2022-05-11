@@ -18,10 +18,11 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
 import { Avatar, Menu, MenuItem, Tooltip } from "@mui/material";
 import { Logout } from "@mui/icons-material";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useAppContext } from "../AppContext/AppContext";
 
 const drawerWidth = 240;
 
@@ -72,6 +73,8 @@ const Drawer = styled(MuiDrawer, {
 const mdTheme = createTheme();
 
 function AppLayout() {
+  const state = useSelector((state) => state.login);
+  const { appTitle } = useAppContext();
   const nav = useNavigate();
   const dispatch = useDispatch();
   const [open, setOpen] = React.useState(true);
@@ -94,144 +97,157 @@ function AppLayout() {
   };
 
   return (
-    <ThemeProvider theme={mdTheme}>
-      <Box sx={{ display: "flex" }}>
-        <CssBaseline />
-        <AppBar position="absolute" open={open}>
-          <Toolbar
-            sx={{
-              pr: "24px", // keep right padding when drawer closed
-            }}
-          >
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              onClick={toggleDrawer}
-              sx={{
-                marginRight: "36px",
-                ...(open && { display: "none" }),
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography
-              component="h1"
-              variant="h6"
-              color="inherit"
-              noWrap
-              sx={{ flexGrow: 1 }}
-            >
-              Dashboard
-            </Typography>
-            <Tooltip title="Account settings">
-              <IconButton
-                onClick={handleClick}
-                size="small"
-                sx={{ ml: 2 }}
-                aria-controls={openMenu ? "account-menu" : undefined}
-                aria-haspopup="true"
-                aria-expanded={openMenu ? "true" : undefined}
+    <>
+      {state.isLoggedin ? (
+        <ThemeProvider theme={mdTheme}>
+          <Box sx={{ display: "flex" }}>
+            <CssBaseline />
+            <AppBar position="absolute" open={open}>
+              <Toolbar
+                sx={{
+                  pr: "24px", // keep right padding when drawer closed
+                }}
               >
-                <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
-              </IconButton>
-            </Tooltip>
-            <Menu
-              anchorEl={anchorEl}
-              id="account-menu"
-              open={openMenu}
-              onClose={handleClose}
-              onClick={handleClose}
-              PaperProps={{
-                elevation: 0,
-                sx: {
-                  overflow: "visible",
-                  filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                  mt: 1.5,
-                  "& .MuiAvatar-root": {
-                    width: 32,
-                    height: 32,
-                    ml: -0.5,
-                    mr: 1,
-                  },
-                  "&:before": {
-                    content: '""',
-                    display: "block",
-                    position: "absolute",
-                    top: 0,
-                    right: 14,
-                    width: 10,
-                    height: 10,
-                    bgcolor: "background.paper",
-                    transform: "translateY(-50%) rotate(45deg)",
-                    zIndex: 0,
-                  },
-                },
+                <IconButton
+                  edge="start"
+                  color="inherit"
+                  aria-label="open drawer"
+                  onClick={toggleDrawer}
+                  sx={{
+                    marginRight: "36px",
+                    ...(open && { display: "none" }),
+                  }}
+                >
+                  <MenuIcon />
+                </IconButton>
+                <Typography
+                  component="h1"
+                  variant="h6"
+                  color="inherit"
+                  noWrap
+                  sx={{ flexGrow: 1 }}
+                >
+                  {appTitle}
+                </Typography>
+                <Tooltip title="Account settings">
+                  <IconButton
+                    onClick={handleClick}
+                    size="small"
+                    sx={{ ml: 2 }}
+                    aria-controls={openMenu ? "account-menu" : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={openMenu ? "true" : undefined}
+                  >
+                    {/* For showing 1st letter of loggged user name */}
+                    <Avatar sx={{ width: 32, height: 32 }}>
+                      {state.loggedUser.name[0].toUpperCase()}
+                    </Avatar>
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  anchorEl={anchorEl}
+                  id="account-menu"
+                  open={openMenu}
+                  onClose={handleClose}
+                  onClick={handleClose}
+                  PaperProps={{
+                    elevation: 0,
+                    sx: {
+                      overflow: "visible",
+                      filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                      mt: 1.5,
+                      "& .MuiAvatar-root": {
+                        width: 32,
+                        height: 32,
+                        ml: -0.5,
+                        mr: 1,
+                      },
+                      "&:before": {
+                        content: '""',
+                        display: "block",
+                        position: "absolute",
+                        top: 0,
+                        right: 14,
+                        width: 10,
+                        height: 10,
+                        bgcolor: "background.paper",
+                        transform: "translateY(-50%) rotate(45deg)",
+                        zIndex: 0,
+                      },
+                    },
+                  }}
+                  transformOrigin={{ horizontal: "right", vertical: "top" }}
+                  anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+                >
+                  <MenuItem>
+                    <Avatar /> Profile
+                  </MenuItem>
+                  <MenuItem onClick={logout}>
+                    <ListItemIcon>
+                      <Logout fontSize="small" />
+                    </ListItemIcon>
+                    Logout
+                  </MenuItem>
+                </Menu>
+              </Toolbar>
+            </AppBar>
+            <Drawer variant="permanent" open={open}>
+              <Toolbar
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "flex-end",
+                  px: [1],
+                }}
+              >
+                <IconButton onClick={toggleDrawer}>
+                  <ChevronLeftIcon />
+                </IconButton>
+              </Toolbar>
+              <Divider />
+              <List component="nav">
+                <Link to="/">
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <DashboardIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Posts" />
+                  </ListItemButton>
+                </Link>
+              </List>
+            </Drawer>
+            <Box
+              component="main"
+              sx={{
+                backgroundColor: (theme) =>
+                  theme.palette.mode === "light"
+                    ? theme.palette.grey[100]
+                    : theme.palette.grey[900],
+                flexGrow: 1,
+                height: "100vh",
+                overflow: "auto",
               }}
-              transformOrigin={{ horizontal: "right", vertical: "top" }}
-              anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
             >
-              <MenuItem>
-                <Avatar /> Profile
-              </MenuItem>
-              <MenuItem onClick={logout}>
-                <ListItemIcon>
-                  <Logout fontSize="small" />
-                </ListItemIcon>
-                Logout
-              </MenuItem>
-            </Menu>
-          </Toolbar>
-        </AppBar>
-        <Drawer variant="permanent" open={open}>
-          <Toolbar
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-end",
-              px: [1],
-            }}
-          >
-            <IconButton onClick={toggleDrawer}>
-              <ChevronLeftIcon />
-            </IconButton>
-          </Toolbar>
-          <Divider />
-          <List component="nav">
-            <ListItemButton>
-              <ListItemIcon>
-                <DashboardIcon />
-              </ListItemIcon>
-              <ListItemText primary="Dashboard" />
-            </ListItemButton>
-          </List>
-        </Drawer>
-        <Box
-          component="main"
-          sx={{
-            backgroundColor: (theme) =>
-              theme.palette.mode === "light"
-                ? theme.palette.grey[100]
-                : theme.palette.grey[900],
-            flexGrow: 1,
-            height: "100vh",
-            overflow: "auto",
-          }}
-        >
-          <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Grid container spacing={3}>
-              {/* Recent Orders */}
-              <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <Outlet />
-                </Paper>
-              </Grid>
-            </Grid>
-          </Container>
-        </Box>
-      </Box>
-    </ThemeProvider>
+              <Toolbar />
+              <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+                <Grid container spacing={3}>
+                  {/* Recent Orders */}
+                  <Grid item xs={12}>
+                    <Paper
+                      sx={{ p: 2, display: "flex", flexDirection: "column" }}
+                    >
+                      <Outlet />
+                    </Paper>
+                  </Grid>
+                </Grid>
+              </Container>
+            </Box>
+          </Box>
+        </ThemeProvider>
+      ) : (
+        <Navigate to={"/login"} />
+      )}
+    </>
   );
 }
 
