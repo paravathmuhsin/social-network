@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Box, Skeleton, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAppContext } from "../../components/AppContext/AppContext";
@@ -39,7 +39,13 @@ const TodosDetail = () => {
             {todos.completed}
           </Typography>
         </>
-      ) : null}
+      ) : (
+        <Box sx={{ width: 300 }}>
+          <Typography component="div" variant={"h3"}>
+            <Skeleton animation="wave" />
+          </Typography>
+        </Box>
+      )}
     </div>
   );
 };
