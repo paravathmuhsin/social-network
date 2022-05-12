@@ -8,11 +8,12 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
   const { updateAppTitle } = useAppContext();
   useEffect(() => {
-    updateAppTitle("Comments");
+    updateAppTitle("Posts");
   }, [updateAppTitle]);
 
   useEffect(() => {
     getPosts().then((res) => {
+      
       setPosts(res);
     });
   }, []);
@@ -27,7 +28,7 @@ const Home = () => {
         sx={{ flexGrow: 1 }}
         style={{ marginBottom: "20px" }}
       >
-        Comments
+        Posts
       </Typography>
       {posts.map((val) => (
         <Grid item style={{ marginBottom: "10px" }} key={val.id} xs={12}>

@@ -214,12 +214,12 @@ function AppLayout() {
                     <ListItemText primary="Posts" />
                   </ListItemButton>
                 </Link>
-                <Link to="./comments">
+                <Link to="/comments">
                   <ListItemButton>
                     <ListItemIcon>
                       <DashboardIcon />
                     </ListItemIcon>
-                    <ListItemText secondary="comments" />
+                    <ListItemText primary="Comments" />
                   </ListItemButton>
                 </Link>
               </List>

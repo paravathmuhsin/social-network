@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAppContext } from "../../components/AppContext/AppContext";
-import { getComment } from "../../services/post.service";
+import { getComment } from "../../services/comment.service";
 
 const CommentsDetail = () => {
   const [comments, setComments] = useState(null);
@@ -45,4 +45,4 @@ const CommentsDetail = () => {
   );
 };
 
-export default commentsDetail;
+export default CommentsDetail;
