@@ -1,40 +1,37 @@
-import { Card, CardContent, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Card, CardContent, Grid, Typography } from "@mui/material";
 import { useAppContext } from "../../components/AppContext/AppContext";
-import { getPosts } from "../../services/post.service";
+import { Link } from "react-router-dom";
 
-const Home = () => {
-  const [posts, setPosts] = useState([]);
+const User = () => {
+  const [users, setUsers] = useState([]);
   const { updateAppTitle } = useAppContext();
-
   useEffect(() => {
     updateAppTitle("Posts");
-  }, [updateAppTitle]);
-
-  useEffect(() => {
-    getPosts().then((res) => {
-      setPosts(res);
-    });
   }, []);
 
+  useEffect(() => {
+    getUsers().then((res) => {
+      setUsers(res);
+    });
+  }, []);
   return (
     <div>
       <Typography
         component="h2"
         variant="h4"
-        color="inherit"
+        color="green"
         noWrap
         sx={{ flexGrow: 1 }}
         style={{ marginBottom: "20px" }}
       >
-        Posts
+        Users
       </Typography>
-      {posts.map((val) => (
+      {users.map((val) => (
         <Grid item style={{ marginBottom: "10px" }} key={val.id} xs={12}>
           <Card sx={{ height: "100%", display: "flex", flexDirection: "row" }}>
             <CardContent sx={{ flexGrow: 1 }}>
-              <Link to={`/post/${val.id}`}>
+              <Link to={`/user/${val.id}`}>
                 <Typography gutterBottom variant="h5" component="h2">
                   {val.title}
                 </Typography>
@@ -48,4 +45,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default User;
