@@ -214,6 +214,14 @@ function AppLayout() {
                     <ListItemText primary="Posts" />
                   </ListItemButton>
                 </Link>
+                <Link to="./comments">
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <DashboardIcon />
+                    </ListItemIcon>
+                    <ListItemText secondary="comments" />
+                  </ListItemButton>
+                </Link>
               </List>
             </Drawer>
             <Box
