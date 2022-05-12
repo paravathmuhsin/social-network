@@ -215,6 +215,19 @@ function AppLayout() {
                   </ListItemButton>
                 </Link>
               </List>
+              <IconButton onClick={toggleDrawer}>
+                <ChevronLeftIcon />
+              </IconButton>
+              <List component="nav">
+                <Link to="./Todos">
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <DashboardIcon />
+                    </ListItemIcon>
+                    <ListItemText secondary="Todos" />
+                  </ListItemButton>
+                </Link>
+              </List>
             </Drawer>
             <Box
               component="main"
