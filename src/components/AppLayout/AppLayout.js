@@ -23,7 +23,7 @@ import { Avatar, Menu, MenuItem, Tooltip } from "@mui/material";
 import { Logout } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { useAppContext } from "../AppContext/AppContext";
-import ImageIcon from '@mui/icons-material/Image';
+
 const drawerWidth = 240;
 
 const AppBar = styled(MuiAppBar, {
@@ -214,14 +214,12 @@ function AppLayout() {
                     <ListItemText primary="Posts" />
                   </ListItemButton>
                 </Link>
-              </List>
-              <List component="nav">
-                <Link to="/Photos">
+                <Link to="/albums">
                   <ListItemButton>
                     <ListItemIcon>
-                    <ImageIcon />
+                      <DashboardIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Photos" />
+                    <ListItemText primary="Albums" />
                   </ListItemButton>
                 </Link>
               </List>
