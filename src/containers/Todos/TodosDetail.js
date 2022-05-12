@@ -5,21 +5,21 @@ import { useAppContext } from "../../components/AppContext/AppContext";
 import { getTodo } from "../../services/todos.service";
 
 const TodosDetail = () => {
-        const [todos, setTodos] = useState(null);
-        const { updateAppTitle } = useAppContext();
-        const { id } = useParams();
-        useEffect(() => {
-          updateAppTitle("Todos Details");
-        }, []);
-      
-        useEffect(() => {
-          getTodo(id).then((res) => {
-            setTodos(res);
-          });
-        }, [id]);
+  const [todos, setTodos] = useState(null);
+  const { updateAppTitle } = useAppContext();
+  const { id } = useParams();
+  useEffect(() => {
+    updateAppTitle("Todos Details");
+  }, []);
+
+  useEffect(() => {
+    getTodo(id).then((res) => {
+      setTodos(res);
+    });
+  }, [id]);
   return (
     <div>
-    {todos ? (
+      {todos ? (
         <>
           <Typography
             component="h2"

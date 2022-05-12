@@ -214,17 +214,12 @@ function AppLayout() {
                     <ListItemText primary="Posts" />
                   </ListItemButton>
                 </Link>
-              </List>
-              <IconButton onClick={toggleDrawer}>
-                <ChevronLeftIcon />
-              </IconButton>
-              <List component="nav">
-                <Link to="./Todos">
+                <Link to="/Todos">
                   <ListItemButton>
                     <ListItemIcon>
                       <DashboardIcon />
                     </ListItemIcon>
-                    <ListItemText secondary="Todos" />
+                    <ListItemText primary="Todos" />
                   </ListItemButton>
                 </Link>
               </List>

@@ -5,7 +5,10 @@ import Fallback from "../Fallback/Fallback";
 
 const Home = React.lazy(() => import("../../containers/Home/Home"));
 const PostDetail = React.lazy(() => import("../../containers/Home/PostDetail"));
-const TodosDetail = React.lazy(() => import("../../containers/Todos/TodosDetail"));
+const Todos = React.lazy(() => import("../../containers/Todos/Todos"));
+const TodosDetail = React.lazy(() =>
+  import("../../containers/Todos/TodosDetail")
+);
 const Login = React.lazy(() => import("../../containers/Login/Login"));
 
 const AppRouter = () => {
@@ -16,19 +19,13 @@ const AppRouter = () => {
           <Route path="/" element={<AppLayout />}>
             <Route index element={<Home />} />
             <Route path="post/:id" element={<PostDetail />} />
-          </Route>
-          <Route path="/login" element={<Login />} />
-        </Routes>
-        <Routes>
-          <Route path="./Todos" element={<AppLayout />}>
-            <Route index element={<Home />} />
+            <Route path="Todos" element={<Todos />} />
             <Route path="todos/:id" element={<TodosDetail />} />
           </Route>
           <Route path="/login" element={<Login />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
-
   );
 };
 

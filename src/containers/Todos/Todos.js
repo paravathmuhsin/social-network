@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import { useAppContext } from "../../components/AppContext/AppContext";
 import { getTodos } from "../../services/todos.service";
 const Todos = () => {
-    const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState([]);
   const { updateAppTitle } = useAppContext();
   useEffect(() => {
     updateAppTitle("Todos");
-  }, [updateAppTitle]);
+  }, []);
 
   useEffect(() => {
     getTodos().then((res) => {
@@ -41,7 +41,7 @@ const Todos = () => {
           </Card>
         </Grid>
       ))}
-       </div>
+    </div>
   );
 };
 
