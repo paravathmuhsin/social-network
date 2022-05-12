@@ -10,7 +10,7 @@ const PostDetail = () => {
   const { id } = useParams();
   useEffect(() => {
     updateAppTitle("Post Details");
-  }, []);
+  });
 
   useEffect(() => {
     getPost(id).then((res) => {
@@ -39,6 +39,7 @@ const PostDetail = () => {
           >
             {post.body}
           </Typography>
+          
         </>
       ) : null}
     </div>
