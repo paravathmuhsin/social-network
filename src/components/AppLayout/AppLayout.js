@@ -23,6 +23,8 @@ import { Avatar, Menu, MenuItem, Tooltip } from "@mui/material";
 import { Logout } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { useAppContext } from "../AppContext/AppContext";
+import CommentIcon from '@mui/icons-material/Comment';
+
 
 const drawerWidth = 240;
 
@@ -217,7 +219,7 @@ function AppLayout() {
                 <Link to="/comments">
                   <ListItemButton>
                     <ListItemIcon>
-                      <DashboardIcon />
+                      <CommentIcon />
                     </ListItemIcon>
                     <ListItemText primary="Comments" />
                   </ListItemButton>

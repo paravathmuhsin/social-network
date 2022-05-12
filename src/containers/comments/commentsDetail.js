@@ -29,7 +29,15 @@ const CommentsDetail = () => {
             sx={{ flexGrow: 1 }}
             style={{ marginBottom: "20px" }}
           >
-            {comments.title}
+            {comments.name}
+          </Typography>
+          <Typography
+            variant="body1"
+            color="inherit"
+            sx={{ flexGrow: 1 }}
+            style={{ marginBottom: "20px" }}
+          >
+            {comments.email}
           </Typography>
           <Typography
             variant="body1"
