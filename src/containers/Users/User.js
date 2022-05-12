@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Card, CardContent, Grid, Typography } from "@mui/material";
 import { useAppContext } from "../../components/AppContext/AppContext";
 import { Link } from "react-router-dom";
+import { getUsers } from "../../services/users-service";
 
 const User = () => {
   const [users, setUsers] = useState([]);
   const { updateAppTitle } = useAppContext();
   useEffect(() => {
-    updateAppTitle("Posts");
+    updateAppTitle("Users");
   }, []);
 
   useEffect(() => {
@@ -33,10 +34,10 @@ const User = () => {
             <CardContent sx={{ flexGrow: 1 }}>
               <Link to={`/user/${val.id}`}>
                 <Typography gutterBottom variant="h5" component="h2">
-                  {val.title}
+                  {val.name}
                 </Typography>
               </Link>
-              <Typography>{val.body}</Typography>
+              <Typography>{val.email}</Typography>
             </CardContent>
           </Card>
         </Grid>

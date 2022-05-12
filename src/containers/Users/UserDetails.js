@@ -30,7 +30,7 @@ const UserDetails = () => {
             sx={{ flexGrow: 1 }}
             style={{ marginBottom: "20px" }}
           >
-            {user.title}
+            {user.name}
           </Typography>
           <Typography
             variant="body1"
@@ -38,7 +38,7 @@ const UserDetails = () => {
             sx={{ flexGrow: 1 }}
             style={{ marginBottom: "20px" }}
           >
-            {user.body}
+            {user.email}
           </Typography>
         </>
       ) : null}

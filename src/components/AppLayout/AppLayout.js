@@ -214,6 +214,14 @@ function AppLayout() {
                     <ListItemText primary="Posts" />
                   </ListItemButton>
                 </Link>
+                <Link to="/users">
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <DashboardIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Users" />
+                  </ListItemButton>
+                </Link>
               </List>
             </Drawer>
             <Box
