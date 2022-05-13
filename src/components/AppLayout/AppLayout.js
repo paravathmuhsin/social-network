@@ -23,7 +23,8 @@ import { Avatar, Menu, MenuItem, Tooltip } from "@mui/material";
 import { Logout } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { useAppContext } from "../AppContext/AppContext";
-import ImageIcon from '@mui/icons-material/Image';
+import ImageIcon from "@mui/icons-material/Image";
+import { setLogout } from "../../store/actions/login.action";
 const drawerWidth = 240;
 
 const AppBar = styled(MuiAppBar, {
@@ -90,7 +91,7 @@ function AppLayout() {
     setAnchorEl(null);
   };
   const logout = () => {
-    dispatch({ type: "SET_LOGOUT" });
+    dispatch(setLogout());
     localStorage.removeItem("isLoggedin");
     localStorage.removeItem("loggedUser");
     nav("/login");
@@ -219,7 +220,7 @@ function AppLayout() {
                 <Link to="/Photos">
                   <ListItemButton>
                     <ListItemIcon>
-                    <ImageIcon />
+                      <ImageIcon />
                     </ListItemIcon>
                     <ListItemText primary="Photos" />
                   </ListItemButton>
@@ -246,6 +247,7 @@ function AppLayout() {
                     <Paper
                       sx={{ p: 2, display: "flex", flexDirection: "column" }}
                     >
+                      {/* {JSON.stringify(state.user)} */}
                       <Outlet />
                     </Paper>
                   </Grid>

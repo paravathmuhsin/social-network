@@ -10,6 +10,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { setLogin } from "../../store/actions/login.action";
 
 const theme = createTheme();
 
@@ -37,7 +38,7 @@ export default function Login() {
           district: "Malappuram",
         },
       };
-      dispatch({ type: "SET_LOGIN", payload: loggedUser });
+      dispatch(setLogin(loggedUser));
       localStorage.setItem("isLoggedin", true);
       localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
       nav("/");

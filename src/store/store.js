@@ -5,4 +5,10 @@ export default configureStore({
   reducer: {
     login: loginReducer,
   },
+  // middleware: getDefaultMiddleware =>
+  //   getDefaultMiddleware({
+  //     thunk: {
+  //       extraArgument: myCustomApiService
+  //     }
+  //   })
 });

@@ -1,19 +1,21 @@
 import { Card, CardContent, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useAppContext } from "../../components/AppContext/AppContext";
 import { getPosts } from "../../services/post.service";
+import { getUser } from "../../store/actions/login.action";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const { updateAppTitle } = useAppContext();
+  const dispatch = useDispatch();
   useEffect(() => {
     updateAppTitle("Posts");
-  }, [updateAppTitle]);
+  }, []);
 
   useEffect(() => {
     getPosts().then((res) => {
-      
       setPosts(res);
     });
   }, []);
@@ -30,6 +32,7 @@ const Home = () => {
       >
         Posts
       </Typography>
+      {/* <button onClick={()=>{dispatch(getUser())}}>Call Asyn redux</button> */}
       {posts.map((val) => (
         <Grid item style={{ marginBottom: "10px" }} key={val.id} xs={12}>
           <Card sx={{ height: "100%", display: "flex", flexDirection: "row" }}>
