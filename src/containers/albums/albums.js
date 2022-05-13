@@ -9,7 +9,7 @@ const Albums = () => {
   const { updateAppTitle } = useAppContext();
   useEffect(() => {
     updateAppTitle("Albums");
-  }, [updateAppTitle]);
+  }, []);
 
   useEffect(() => {
     getAlbums().then((res) => {
@@ -35,10 +35,9 @@ const Albums = () => {
             <CardContent sx={{ flexGrow: 1 }}>
               <Link to={`/albums/${val.id}`}>
                 <Typography gutterBottom variant="h5" component="h2">
-                  {val.name}
+                  {val.title}
                 </Typography>
               </Link>
-              <Typography>{val.body}</Typography>
             </CardContent>
           </Card>
         </Grid>
