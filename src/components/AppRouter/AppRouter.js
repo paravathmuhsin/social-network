@@ -14,6 +14,10 @@ const Todos = React.lazy(() => import("../../containers/Todos/Todos"));
 const TodosDetail = React.lazy(() =>
   import("../../containers/Todos/TodosDetail")
 );
+const Users = React.lazy(() => import("../../containers/Users/User"));
+const UserDetails = React.lazy(() =>
+  import("../../containers/Users/UserDetails")
+);
 const Login = React.lazy(() => import("../../containers/Login/Login"));
 const Photos = React.lazy(() => import("../../containers/Photos/Photos"));
 const PhotoDetails = React.lazy(() =>
@@ -34,6 +38,8 @@ const AppRouter = () => {
             <Route path="comments/:id" element={<CommentsDetail />} />
             <Route path="Todos" element={<Todos />} />
             <Route path="todos/:id" element={<TodosDetail />} />
+            <Route path="users" element={<Users />} />
+            <Route path="user/:id" element={<UserDetails />} />
           </Route>
 
           <Route path="/login" element={<Login />} />

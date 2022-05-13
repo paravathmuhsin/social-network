@@ -4,6 +4,7 @@ const ApplicationContext = createContext(null);
 
 export const useAppContext = ()=> useContext(ApplicationContext)
 
+
 const AppContext = ({ children }) => {
   const [state, setState] = useState({
     appTitle: "",
