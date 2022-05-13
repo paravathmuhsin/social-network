@@ -18,6 +18,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import DashboardIcon from "@mui/icons-material/Dashboard";
+import ListIcon from "@mui/icons-material/List";
 import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
 import { Avatar, Menu, MenuItem, Tooltip } from "@mui/material";
 import { Logout } from "@mui/icons-material";
@@ -231,6 +232,14 @@ function AppLayout() {
                       <CommentIcon />
                     </ListItemIcon>
                     <ListItemText primary="Comments" />
+                  </ListItemButton>
+                </Link>
+                <Link to="/Todos">
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <ListIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Todos" />
                   </ListItemButton>
                 </Link>
               </List>
