@@ -18,6 +18,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import DashboardIcon from "@mui/icons-material/Dashboard";
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
 import { Avatar, Menu, MenuItem, Tooltip } from "@mui/material";
 import { Logout } from "@mui/icons-material";
@@ -217,7 +218,7 @@ function AppLayout() {
                 <Link to="/users">
                   <ListItemButton>
                     <ListItemIcon>
-                      <DashboardIcon />
+                      <PersonOutlineIcon />
                     </ListItemIcon>
                     <ListItemText primary="Users" />
                   </ListItemButton>
@@ -226,7 +227,7 @@ function AppLayout() {
             </Drawer>
             <Box
               component="main"
-              sx={{
+              sx={{ 
                 backgroundColor: (theme) =>
                   theme.palette.mode === "light"
                     ? theme.palette.grey[100]

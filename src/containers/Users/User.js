@@ -9,7 +9,7 @@ const User = () => {
   const { updateAppTitle } = useAppContext();
   useEffect(() => {
     updateAppTitle("Users");
-  }, []);
+  });
 
   useEffect(() => {
     getUsers().then((res) => {

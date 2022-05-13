@@ -11,7 +11,7 @@ const UserDetails = () => {
   const { id } = useParams();
   useEffect(() => {
     updateAppTitle("User Details");
-  }, []);
+  });
 
   useEffect(() => {
     getUser(id).then((res) => {
@@ -35,10 +35,31 @@ const UserDetails = () => {
           <Typography
             variant="body1"
             color="inherit"
+            align="center"
             sx={{ flexGrow: 1 }}
             style={{ marginBottom: "20px" }}
           >
-            {user.email}
+            Username:{user.username}
+          </Typography>
+          <Typography
+            variant="body1"
+            color="inherit"
+            align="center"
+            sx={{ flexGrow: 1 }}
+            style={{ marginBottom: "20px" }}
+          >
+            E-mail:{user.email}
+          </Typography>
+          <Typography
+            variant="body1"
+            color="inherit"
+            align="center"
+            justifyContent="space-between"
+            sx={{ flexGrow: 1 }}
+            style={{ marginBottom: "20px" }}
+          >
+            Address- Street:{user.address.street }Suite:{user.address.suite} 
+            City:{user.address.city}  Zipcode:{user.address.zipcode}
           </Typography>
         </>
       ) : null}

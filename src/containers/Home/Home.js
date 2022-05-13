@@ -10,7 +10,7 @@ const Home = () => {
 
   useEffect(() => {
     updateAppTitle("Posts");
-  }, []);
+  } );
 
   useEffect(() => {
     getPosts().then((res) => {
