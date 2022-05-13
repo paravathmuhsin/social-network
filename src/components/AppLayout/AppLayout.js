@@ -227,6 +227,14 @@ function AppLayout() {
                     <ListItemText primary="Photos" />
                   </ListItemButton>
                 </Link>
+                <Link to="/albums">
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <DashboardIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Albums" />
+                  </ListItemButton>
+                </Link>
                 <Link to="/comments">
                   <ListItemButton>
                     <ListItemIcon>

@@ -1,6 +1,5 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
 import AppLayout from "../AppLayout/AppLayout";
 import Fallback from "../Fallback/Fallback";
 
@@ -23,6 +22,10 @@ const Photos = React.lazy(() => import("../../containers/Photos/Photos"));
 const PhotoDetails = React.lazy(() =>
   import("../../containers/Photos/PhotoDetails")
 );
+const Albums = React.lazy(() => import("../../containers/albums/albums"));
+const AlbumsDetails = React.lazy(() =>
+  import("../../containers/albums/albumsDetails")
+);
 
 const AppRouter = () => {
   return (
@@ -40,6 +43,8 @@ const AppRouter = () => {
             <Route path="todos/:id" element={<TodosDetail />} />
             <Route path="users" element={<Users />} />
             <Route path="user/:id" element={<UserDetails />} />
+            <Route path="albums" element={<Albums />} />
+            <Route path="albums/:id" element={<AlbumsDetails />} />
           </Route>
 
           <Route path="/login" element={<Login />} />
