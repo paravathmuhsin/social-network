@@ -25,6 +25,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useAppContext } from "../AppContext/AppContext";
 import ImageIcon from "@mui/icons-material/Image";
 import { setLogout } from "../../store/actions/login.action";
+import CommentIcon from "@mui/icons-material/Comment";
+
 const drawerWidth = 240;
 
 const AppBar = styled(MuiAppBar, {
@@ -213,6 +215,14 @@ function AppLayout() {
                       <DashboardIcon />
                     </ListItemIcon>
                     <ListItemText primary="Posts" />
+                  </ListItemButton>
+                </Link>
+                <Link to="/comments">
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <CommentIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Comments" />
                   </ListItemButton>
                 </Link>
               </List>

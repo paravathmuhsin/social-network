@@ -1,22 +1,18 @@
 import { Card, CardContent, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useAppContext } from "../../components/AppContext/AppContext";
-import { getPosts } from "../../services/post.service";
-import { getUser } from "../../store/actions/login.action";
+import { getComments } from "../../services/comment.service";
 
-const Home = () => {
+const Comments = () => {
   const [posts, setPosts] = useState([]);
   const { updateAppTitle } = useAppContext();
-  const dispatch = useDispatch();
   useEffect(() => {
-    updateAppTitle("Posts");
-  }, []);
+    updateAppTitle("Comments");
+  }, [updateAppTitle]);
 
   useEffect(() => {
-    getPosts().then((res) => {
-      
+    getComments().then((res) => {
       setPosts(res);
     });
   }, []);
@@ -31,16 +27,15 @@ const Home = () => {
         sx={{ flexGrow: 1 }}
         style={{ marginBottom: "20px" }}
       >
-        Posts
+        Comments
       </Typography>
-      {/* <button onClick={()=>{dispatch(getUser())}}>Call Asyn redux</button> */}
       {posts.map((val) => (
         <Grid item style={{ marginBottom: "10px" }} key={val.id} xs={12}>
           <Card sx={{ height: "100%", display: "flex", flexDirection: "row" }}>
             <CardContent sx={{ flexGrow: 1 }}>
-              <Link to={`/post/${val.id}`}>
+              <Link to={`/comments/${val.id}`}>
                 <Typography gutterBottom variant="h5" component="h2">
-                  {val.title}
+                  {val.name}
                 </Typography>
               </Link>
               <Typography>{val.body}</Typography>
@@ -52,4 +47,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Comments;
