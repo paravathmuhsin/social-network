@@ -9,7 +9,7 @@ const Comments = () => {
   const { updateAppTitle } = useAppContext();
   useEffect(() => {
     updateAppTitle("Comments");
-  }, [updateAppTitle]);
+  }, []);
 
   useEffect(() => {
     getComments().then((res) => {

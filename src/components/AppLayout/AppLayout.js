@@ -217,22 +217,20 @@ function AppLayout() {
                     <ListItemText primary="Posts" />
                   </ListItemButton>
                 </Link>
-                <Link to="/comments">
-                  <ListItemButton>
-                    <ListItemIcon>
-                      <CommentIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Comments" />
-                  </ListItemButton>
-                </Link>
-              </List>
-              <List component="nav">
                 <Link to="/Photos">
                   <ListItemButton>
                     <ListItemIcon>
                       <ImageIcon />
                     </ListItemIcon>
                     <ListItemText primary="Photos" />
+                  </ListItemButton>
+                </Link>
+                <Link to="/comments">
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <CommentIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Comments" />
                   </ListItemButton>
                 </Link>
               </List>
