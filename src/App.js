@@ -1,10 +1,16 @@
-import React from 'react'
+import React from "react";
+import { Provider } from "react-redux";
+import AppContext from "./components/AppContext/AppContext";
+import AppRouter from "./components/AppRouter/AppRouter";
+import store from "./store/store";
 
 function App() {
   return (
-    <div>
-      Social network
-    </div>
+    <Provider store={store}>
+      <AppContext>
+        <AppRouter />
+      </AppContext>
+    </Provider>
   );
 }
 
