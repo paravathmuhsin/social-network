@@ -28,6 +28,7 @@ import { useAppContext } from "../AppContext/AppContext";
 import ImageIcon from "@mui/icons-material/Image";
 import { setLogout } from "../../store/actions/login.action";
 import CommentIcon from "@mui/icons-material/Comment";
+import ProfileImg from "../../assets/images/profile.jpg";
 
 const drawerWidth = 240;
 
@@ -95,12 +96,14 @@ function AppLayout() {
     setAnchorEl(null);
   };
   const logout = () => {
+    handleClose();
     dispatch(setLogout());
     localStorage.removeItem("isLoggedin");
     localStorage.removeItem("loggedUser");
     nav("/login");
   };
   const profile = () => {
+    handleClose();
     nav("/profile");
   };
 
@@ -147,9 +150,10 @@ function AppLayout() {
                     aria-expanded={openMenu ? "true" : undefined}
                   >
                     {/* For showing 1st letter of loggged user name */}
-                    <Avatar sx={{ width: 32, height: 32 }}>
+                    <Avatar src={ProfileImg} sx={{ width: 42, height: 42 }} />
+                    {/* <Avatar sx={{ width: 32, height: 32 }}>
                       {state.loggedUser.name[0].toUpperCase()}
-                    </Avatar>
+                    </Avatar> */}
                   </IconButton>
                 </Tooltip>
                 <Menu

@@ -1,19 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Typography } from "@mui/material";
-//import { useAppContext } from "../../components/AppContext/AppContext";
-// import { useDispatch } from "react-redux";
-//import { GET_USER } from "../../store/types/login.types";
-
-
-
-
-
-
+import { useSelector } from "react-redux";
+import { useAppContext } from "../../components/AppContext/AppContext";
 
 const Profile = () => {
+  const loggedUser = useSelector((state) => state.login.loggedUser);
+  const { updateAppTitle } = useAppContext();
+  useEffect(() => {
+    updateAppTitle("Profile");
+  }, []);
   return (
-    <div>
-      <></><Typography
+    <>
+      <Typography
         component="h2"
         variant="h4"
         color="green"
@@ -21,7 +19,7 @@ const Profile = () => {
         sx={{ flexGrow: 1 }}
         style={{ marginBottom: "20px" }}
       >
-        Profile Details: <br/>
+        Profile Details: <br />
       </Typography>
       <Typography
         component="h2"
@@ -31,12 +29,13 @@ const Profile = () => {
         sx={{ flexGrow: 1 }}
         style={{ marginBottom: "20px" }}
       >
-        Name: Arya <br/>
-        Age: 55 <br/>
-        Place: Kottakkal <br/>
-        District: Malappuram<br/>
-
+        Name: {loggedUser.name} <br />
+        Age: {loggedUser.age} <br />
+        Place: {loggedUser.address.place} <br />
+        District: {loggedUser.address.district}
+        <br />
       </Typography>
-    </div>
-  )};
+    </>
+  );
+};
 export default Profile;
