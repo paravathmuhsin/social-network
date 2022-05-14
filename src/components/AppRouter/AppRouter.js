@@ -17,6 +17,9 @@ const Users = React.lazy(() => import("../../containers/Users/User"));
 const UserDetails = React.lazy(() =>
   import("../../containers/Users/UserDetails")
 );
+const Profile = React.lazy(() =>
+  import("../../containers/Profile/Profile")
+);
 const Login = React.lazy(() => import("../../containers/Login/Login"));
 const Photos = React.lazy(() => import("../../containers/Photos/Photos"));
 const PhotoDetails = React.lazy(() =>
@@ -44,6 +47,7 @@ const AppRouter = () => {
             <Route path="users" element={<Users />} />
             <Route path="user/:id" element={<UserDetails />} />
             <Route path="albums" element={<Albums />} />
+            <Route path="profile" element={<Profile />} />
             <Route path="albums/:id" element={<AlbumsDetails />} />
           </Route>
 
