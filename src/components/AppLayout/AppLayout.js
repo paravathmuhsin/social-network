@@ -100,6 +100,9 @@ function AppLayout() {
     localStorage.removeItem("loggedUser");
     nav("/login");
   };
+  const profile = () => {
+    nav("/profile");
+  };
 
   return (
     <>
@@ -184,7 +187,7 @@ function AppLayout() {
                   transformOrigin={{ horizontal: "right", vertical: "top" }}
                   anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
                 >
-                  <MenuItem>
+                  <MenuItem onClick={profile}>
                     <Avatar /> Profile
                   </MenuItem>
                   <MenuItem onClick={logout}>
